@@ -3,7 +3,7 @@ import { ABOUT_INFO, PERSONAL_INFO } from '../data/portfolioData';
 
 export const About: React.FC = () => {
   return (
-    <section id="about" className="w-full bg-bg py-16 md:py-24 flex flex-col overflow-hidden border-t border-border/50">
+    <section id="about" className="w-full bg-bg py-16 md:py-24 flex flex-col overflow-hidden border-t border-border/50 scroll-mt-20">
       <div className="w-full max-w-[1200px] mx-auto px-[clamp(1.5rem,5vw,3.5rem)]">
         {/* Section Header */}
         <div className="mb-12">

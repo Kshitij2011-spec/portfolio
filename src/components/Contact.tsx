@@ -33,7 +33,7 @@ export const Contact: React.FC = () => {
   return (
     <section
       id="contact"
-      className="relative w-full bg-bg-dark border-t border-border-dark py-16 md:py-24 overflow-hidden text-white"
+      className="relative w-full bg-bg-dark border-t border-border-dark py-16 md:py-24 overflow-hidden text-white scroll-mt-20"
     >
       {/* Background Soft Glow */}
       <div

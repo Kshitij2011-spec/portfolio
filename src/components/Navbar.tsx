@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface NavbarProps {
   activeSection: string;
@@ -13,9 +14,30 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Escape key handler to close mobile menu
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsMobileMenuOpen(false);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  // Body scroll locking when drawer is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
 
   const navLinks = [
     { name: 'Home', href: '#hero', id: 'hero' },
@@ -45,7 +67,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
           </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-8" aria-label="Main Navigation">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
               return (
@@ -68,8 +90,9 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
           {/* Mobile Hamburger Button */}
           <button
             onClick={() => setIsMobileMenuOpen(true)}
-            className="md:hidden text-text p-1 hover:opacity-75 transition-opacity"
+            className="md:hidden text-text p-1 hover:opacity-75 transition-opacity cursor-pointer"
             aria-label="Open mobile navigation menu"
+            aria-expanded={isMobileMenuOpen}
           >
             <Menu className="w-5 h-5" />
           </button>
@@ -78,7 +101,12 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
 
       {/* Fullscreen Mobile Navigation Drawer */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-[200] bg-bg flex flex-col p-[clamp(1.5rem,5vw,3.5rem)] transition-opacity duration-300">
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Navigation Menu"
+          className="fixed inset-0 z-[200] bg-bg flex flex-col p-[clamp(1.5rem,5vw,3.5rem)] transition-opacity duration-300"
+        >
           <div className="flex justify-between items-center h-[64px] mb-12">
             <span className="font-body font-black text-[1.25rem] text-text flex tracking-tight">
               <span>K</span>
@@ -86,14 +114,14 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
             </span>
             <button
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-muted hover:text-text p-1 transition-colors"
+              className="text-muted hover:text-text p-1 transition-colors cursor-pointer"
               aria-label="Close mobile navigation menu"
             >
               <X className="w-6 h-6" />
             </button>
           </div>
 
-          <nav className="flex flex-col gap-8 flex-grow justify-center">
+          <nav className="flex flex-col gap-8 flex-grow justify-center" aria-label="Mobile Navigation">
             {navLinks.map((link) => (
               <a
                 key={link.id}
@@ -109,8 +137,13 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
           </nav>
 
           <div className="pb-8 border-t border-border pt-6 flex flex-col gap-2">
-            <span className="font-mono text-[0.8rem] text-muted">kshitijparkhe2011@gmail.com</span>
-            <span className="font-mono text-[0.72rem] text-light">Mumbai, India</span>
+            <a
+              href={`mailto:${PERSONAL_INFO.email}`}
+              className="font-mono text-[0.82rem] text-muted hover:text-text transition-colors"
+            >
+              {PERSONAL_INFO.email}
+            </a>
+            <span className="font-mono text-[0.72rem] text-light">{PERSONAL_INFO.location}</span>
           </div>
         </div>
       )}

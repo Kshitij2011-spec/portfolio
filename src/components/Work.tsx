@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, ExternalLink, Terminal, Layers, Activity } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ExternalLink, Terminal, Layers } from 'lucide-react';
 import { PROJECTS, PINNED_REPOS } from '../data/portfolioData';
 import { Project } from '../types';
 
@@ -28,95 +28,8 @@ export const Work: React.FC = () => {
     }));
   };
 
-  // Generate simulated realistic contribution graph data (52 weeks x 7 days)
-  const renderContributionGrid = () => {
-    const weeks = 52;
-    const months = [
-      { name: 'Oct', offset: 0 },
-      { name: 'Nov', offset: 4 },
-      { name: 'Dec', offset: 8 },
-      { name: 'Jan', offset: 13 },
-      { name: 'Feb', offset: 17 },
-      { name: 'Mar', offset: 21 },
-      { name: 'Apr', offset: 26 },
-      { name: 'May', offset: 30 },
-      { name: 'Jun', offset: 34 },
-      { name: 'Jul', offset: 39 },
-      { name: 'Aug', offset: 43 },
-      { name: 'Sep', offset: 47 },
-    ];
-
-    // Seeded density pattern
-    const getLevel = (week: number, day: number) => {
-      const v = (Math.sin(week * 13 + day * 7) * 10000) % 1;
-      const absV = Math.abs(v);
-      if (week > 42) return absV > 0.4 ? (absV > 0.75 ? 3 : 2) : (absV > 0.2 ? 1 : 0);
-      if (absV > 0.8) return 3;
-      if (absV > 0.6) return 2;
-      if (absV > 0.35) return 1;
-      return 0;
-    };
-
-    const colors = [
-      'bg-[#E5E0DB]', // 0 - empty
-      'bg-[#c8e2d4]', // 1 - light
-      'bg-[#86cca4]', // 2 - medium
-      'bg-[#3da36d]', // 3 - dense
-    ];
-
-    return (
-      <div className="bg-bg border border-border rounded-[12px] p-6 shadow-xs overflow-x-auto relative">
-        <div className="min-w-[760px]">
-          {/* Month labels */}
-          <div className="flex text-[10px] text-muted font-mono mb-2 relative h-4">
-            {months.map((m, idx) => (
-              <span
-                key={idx}
-                className="absolute"
-                style={{ left: `${(m.offset / weeks) * 100}%` }}
-              >
-                {m.name}
-              </span>
-            ))}
-          </div>
-
-          {/* Grid of days */}
-          <div className="flex gap-[3px]">
-            {Array.from({ length: weeks }).map((_, w) => (
-              <div key={w} className="flex flex-col gap-[3px]">
-                {Array.from({ length: 7 }).map((_, d) => {
-                  const level = getLevel(w, d);
-                  return (
-                    <div
-                      key={d}
-                      title={`Activity level: ${level}`}
-                      className={`w-[11px] h-[11px] rounded-[2px] transition-colors duration-200 cursor-crosshair ${colors[level]}`}
-                    />
-                  );
-                })}
-              </div>
-            ))}
-          </div>
-
-          {/* Legend */}
-          <div className="flex items-center justify-between text-[11px] font-mono text-muted mt-4 pt-3 border-t border-border/50">
-            <span>540+ contributions in the last year</span>
-            <div className="flex items-center gap-1.5">
-              <span>Less</span>
-              <div className="w-[10px] h-[10px] rounded-[2px] bg-[#E5E0DB]" />
-              <div className="w-[10px] h-[10px] rounded-[2px] bg-[#c8e2d4]" />
-              <div className="w-[10px] h-[10px] rounded-[2px] bg-[#86cca4]" />
-              <div className="w-[10px] h-[10px] rounded-[2px] bg-[#3da36d]" />
-              <span>More</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   return (
-    <section id="work" className="w-full bg-bg-alt py-16 md:py-24 flex flex-col border-y border-border overflow-hidden">
+    <section id="work" className="w-full bg-bg-alt py-16 md:py-24 flex flex-col border-y border-border overflow-hidden scroll-mt-20">
       <div className="w-full max-w-[1200px] mx-auto px-[clamp(1.5rem,5vw,3.5rem)]">
         {/* Section Header */}
         <div className="mb-14">
@@ -207,11 +120,12 @@ export const Work: React.FC = () => {
                     <button
                       onClick={() => toggleExpand(project.id)}
                       className="text-left font-body font-semibold text-[0.88rem] text-[#16a34a] mt-2 transition-opacity duration-200 inline-block w-max hover:opacity-80 cursor-pointer"
+                      aria-expanded={isExpanded}
                     >
                       {isExpanded ? 'Show less ↑' : 'Read more ↓'}
                     </button>
 
-                    {/* Metrics if available */}
+                    {/* Metrics if available (Held-out Test Metrics strictly) */}
                     {project.metrics && (
                       <div className="grid grid-cols-3 gap-3 mt-4 p-3 bg-bg-alt/70 border border-border/60 rounded-[8px]">
                         {project.metrics.map((m, mi) => (
@@ -235,39 +149,41 @@ export const Work: React.FC = () => {
                       ))}
                     </div>
 
-                    {/* Action buttons */}
-                    <div className="flex flex-wrap items-center gap-5 mt-6 pt-3 border-t border-border/40">
-                      {project.liveUrl && (
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="inline-flex items-center gap-1.5 text-text font-mono text-[0.82rem] font-semibold hover:text-muted transition-colors"
-                        >
-                          Live Demo <ExternalLink className="w-3.5 h-3.5" />
-                        </a>
-                      )}
-                      {project.githubUrl && (
-                        <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="inline-flex items-center gap-1.5 text-muted hover:text-text font-mono text-[0.82rem] transition-colors"
-                        >
-                          GitHub →
-                        </a>
-                      )}
-                      {project.docsUrl && (
-                        <a
-                          href={project.docsUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="inline-flex items-center gap-1.5 text-muted hover:text-text font-mono text-[0.82rem] transition-colors"
-                        >
-                          API Docs ↗
-                        </a>
-                      )}
-                    </div>
+                    {/* Action buttons (Only show when verified external link exists) */}
+                    {(project.liveUrl || project.githubUrl || project.docsUrl) && (
+                      <div className="flex flex-wrap items-center gap-5 mt-6 pt-3 border-t border-border/40">
+                        {project.liveUrl && (
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-1.5 text-text font-mono text-[0.82rem] font-semibold hover:text-muted transition-colors"
+                          >
+                            Live Demo <ExternalLink className="w-3.5 h-3.5" />
+                          </a>
+                        )}
+                        {project.githubUrl && (
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-1.5 text-muted hover:text-text font-mono text-[0.82rem] transition-colors"
+                          >
+                            GitHub →
+                          </a>
+                        )}
+                        {project.docsUrl && (
+                          <a
+                            href={project.docsUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-1.5 text-muted hover:text-text font-mono text-[0.82rem] transition-colors"
+                          >
+                            API Docs ↗
+                          </a>
+                        )}
+                      </div>
+                    )}
                   </div>
 
                   {/* Right Column: Visual Component / Gallery */}
@@ -277,7 +193,7 @@ export const Work: React.FC = () => {
                         <div className="w-full relative overflow-hidden bg-bg aspect-[16/10]">
                           <img
                             src={project.images[currentImg]}
-                            alt={`${project.title} screenshot ${currentImg + 1}`}
+                            alt={`${project.title} visualization`}
                             className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-[1.02]"
                           />
                         </div>
@@ -324,14 +240,14 @@ export const Work: React.FC = () => {
                         )}
                       </div>
                     ) : project.id === 'smart-automation' ? (
-                      /* Bespoke Interactive GenAI Agent Visual Card */
+                      /* Bespoke Agent Loop Visual Card */
                       <div className="w-full rounded-[10px] p-5 bg-bg border border-border/80 shadow-xs flex flex-col gap-3 font-mono text-[0.78rem]">
                         <div className="flex items-center justify-between pb-3 border-b border-border/60">
                           <span className="flex items-center gap-1.5 text-text font-bold">
                             <Terminal className="w-3.5 h-3.5 text-blue-600" />
                             Agent Loop Execution
                           </span>
-                          <span className="text-[0.65rem] px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-semibold">Gemini Interactions API</span>
+                          <span className="text-[0.65rem] px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-semibold">Gemini API</span>
                         </div>
                         <div className="flex flex-col gap-2">
                           <div className="p-2.5 bg-white rounded border border-border/50 text-text/90">
@@ -339,10 +255,10 @@ export const Work: React.FC = () => {
                             "Summarize important emails, update task backlog, and generate sales report."
                           </div>
                           <div className="flex items-center gap-2 text-muted justify-center py-0.5">
-                            <span>↓ Function Calling Intent Dispatched</span>
+                            <span>↓ Tool Selection Intent Dispatched</span>
                           </div>
                           <div className="p-2.5 bg-bg-alt rounded border border-border/50">
-                            <span className="text-muted block text-[0.65rem] uppercase">Tool Declarations Dispatched</span>
+                            <span className="text-muted block text-[0.65rem] uppercase">Python Tools Dispatched</span>
                             <div className="flex flex-wrap gap-1.5 mt-1">
                               <span className="px-1.5 py-0.5 bg-white rounded text-[0.68rem] text-text border border-border">get_emails()</span>
                               <span className="px-1.5 py-0.5 bg-white rounded text-[0.68rem] text-text border border-border">create_task()</span>
@@ -351,36 +267,36 @@ export const Work: React.FC = () => {
                             </div>
                           </div>
                           <div className="p-2 bg-emerald-50 rounded border border-emerald-200 text-emerald-900 text-[0.72rem]">
-                            ✓ Autonomous tool dispatch &amp; structured markdown result synthesized.
+                            ✓ Tool loop executed &amp; structured markdown result synthesized.
                           </div>
                         </div>
                       </div>
                     ) : (
-                      /* Bespoke Layered REST Architecture Card for Aarogya */
+                      /* Layered Spring Boot Architecture Card for Aarogya */
                       <div className="w-full rounded-[10px] p-5 bg-bg border border-border/80 shadow-xs flex flex-col gap-3 font-mono text-[0.78rem]">
                         <div className="flex items-center justify-between pb-3 border-b border-border/60">
                           <span className="flex items-center gap-1.5 text-text font-bold">
                             <Layers className="w-3.5 h-3.5 text-orange-600" />
-                            Layered Spring Boot Architecture
+                            Modular Backend Architecture
                           </span>
-                          <span className="text-[0.65rem] px-2 py-0.5 rounded bg-orange-100 text-orange-800 font-semibold">Java + REST</span>
+                          <span className="text-[0.65rem] px-2 py-0.5 rounded bg-orange-100 text-orange-800 font-semibold">Java + Spring Boot</span>
                         </div>
                         <div className="grid grid-cols-1 gap-2">
                           <div className="p-2 bg-white rounded border border-border/60 flex items-center justify-between">
                             <span className="font-semibold text-text">1. Controller Layer</span>
-                            <span className="text-muted text-[0.68rem]">DTO validation, request routing</span>
+                            <span className="text-muted text-[0.68rem]">Request routing &amp; DTO validation</span>
                           </div>
                           <div className="p-2 bg-white rounded border border-border/60 flex items-center justify-between">
                             <span className="font-semibold text-text">2. Service Layer</span>
-                            <span className="text-muted text-[0.68rem]">Business logic &amp; session states</span>
+                            <span className="text-muted text-[0.68rem]">Workflow orchestration logic</span>
                           </div>
                           <div className="p-2 bg-white rounded border border-border/60 flex items-center justify-between">
                             <span className="font-semibold text-text">3. Analysis Layer</span>
-                            <span className="text-muted text-[0.68rem]">Deterministic symptom triage</span>
+                            <span className="text-muted text-[0.68rem]">Deterministic symptom evaluation</span>
                           </div>
                           <div className="p-2 bg-white rounded border border-border/60 flex items-center justify-between">
-                            <span className="font-semibold text-text">4. Persistence Layer</span>
-                            <span className="text-muted text-[0.68rem]">PostgreSQL repositories</span>
+                            <span className="font-semibold text-text">4. Client REST Contract</span>
+                            <span className="text-muted text-[0.68rem]">Decoupled for frontend integration</span>
                           </div>
                         </div>
                       </div>
@@ -392,66 +308,26 @@ export const Work: React.FC = () => {
           })}
         </div>
 
-        {/* Open Source Activity Section */}
+        {/* Verified Codebases & Pinned Repositories */}
         <div className="mt-20 pt-16 border-t border-border">
-          <div className="flex items-center gap-2 mb-8">
-            <div className="h-[1px] bg-muted w-4" />
-            <h3 className="font-mono text-[0.7rem] text-muted tracking-[0.2em] uppercase">
-              // OPEN SOURCE ACTIVITY
-            </h3>
-          </div>
-
-          <div className="flex flex-col gap-6 w-full">
-            {/* 4 Stat Cards */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="flex flex-col p-4 bg-bg border border-border rounded-[12px] shadow-xs">
-                <span className="font-mono text-[0.65rem] text-muted tracking-widest uppercase mb-1">
-                  Total Contributions
-                </span>
-                <span className="font-body font-extrabold text-2xl text-text">540+</span>
-              </div>
-              <div className="flex flex-col p-4 bg-bg border border-border rounded-[12px] shadow-xs">
-                <span className="font-mono text-[0.65rem] text-muted tracking-widest uppercase mb-1">
-                  Longest Streak
-                </span>
-                <span className="font-body font-extrabold text-2xl text-text">18 days</span>
-              </div>
-              <div className="flex flex-col p-4 bg-bg border border-border rounded-[12px] shadow-xs">
-                <span className="font-mono text-[0.65rem] text-muted tracking-widest uppercase mb-1">
-                  Most Active Month
-                </span>
-                <span className="font-body font-extrabold text-2xl text-text">Sep 2026</span>
-              </div>
-              <div className="flex flex-col p-4 bg-bg border border-border rounded-[12px] shadow-xs">
-                <span className="font-mono text-[0.65rem] text-muted tracking-widest uppercase mb-1">
-                  Total Public Repos
-                </span>
-                <span className="font-body font-extrabold text-2xl text-text">18</span>
-              </div>
+          <div className="flex justify-between items-center mb-6">
+            <div className="flex items-center gap-2">
+              <div className="h-[1px] bg-muted w-4" />
+              <h3 className="font-mono text-[0.7rem] text-muted tracking-[0.2em] uppercase">
+                // CODEBASES &amp; REPOSITORIES
+              </h3>
             </div>
-
-            {/* Commit Heatmap Grid */}
-            {renderContributionGrid()}
-          </div>
-        </div>
-
-        {/* Pinned Repositories */}
-        <div className="flex flex-col gap-4 mt-16">
-          <div className="flex justify-between items-center mb-2">
-            <h3 className="font-mono text-[0.7rem] text-muted tracking-[0.2em] uppercase">
-              // PINNED REPOSITORIES
-            </h3>
             <a
               href="https://github.com/Kshitij2011-spec"
               target="_blank"
               rel="noreferrer"
-              className="font-mono text-[0.7rem] text-text hover:text-muted transition-colors tracking-widest uppercase"
+              className="font-mono text-[0.72rem] text-text hover:text-muted transition-colors tracking-widest uppercase flex items-center gap-1"
             >
-              View on GitHub →
+              18 Repos on GitHub →
             </a>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {PINNED_REPOS.map((repo, ri) => (
               <a
                 key={ri}
@@ -460,10 +336,10 @@ export const Work: React.FC = () => {
                 rel="noreferrer"
                 className="group flex flex-col p-5 bg-bg-card border border-border hover:border-text/40 rounded-[12px] transition-all shadow-xs h-full"
               >
-                <span className="font-body font-bold text-[1.1rem] text-text mb-2 group-hover:underline decoration-1 underline-offset-2">
+                <span className="font-body font-bold text-[1.05rem] text-text mb-2 group-hover:underline decoration-1 underline-offset-2">
                   {repo.name}
                 </span>
-                <p className="font-body text-[0.88rem] text-muted mb-6 flex-grow leading-relaxed">
+                <p className="font-body text-[0.85rem] text-muted mb-6 flex-grow leading-relaxed">
                   {repo.description}
                 </p>
                 <div className="flex items-center gap-4 text-[0.75rem] font-mono text-muted mt-auto pt-3 border-t border-border/40">
@@ -474,12 +350,6 @@ export const Work: React.FC = () => {
                     />
                     {repo.language}
                   </div>
-                  {repo.stars !== undefined && (
-                    <span className="flex items-center gap-1">★ {repo.stars}</span>
-                  )}
-                  {repo.forks !== undefined && (
-                    <span className="flex items-center gap-1">⑂ {repo.forks}</span>
-                  )}
                 </div>
               </a>
             ))}

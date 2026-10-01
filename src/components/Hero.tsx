@@ -5,7 +5,7 @@ export const Hero: React.FC = () => {
   return (
     <section
       id="hero"
-      className="relative w-full bg-bg flex flex-col overflow-hidden pt-[110px] pb-16 md:pb-24 min-h-[92vh] justify-between"
+      className="relative w-full bg-bg flex flex-col overflow-hidden pt-[110px] pb-16 md:pb-24 min-h-[92vh] justify-between scroll-mt-20"
     >
       {/* Background Soft Pastel Glow */}
       <div
@@ -25,20 +25,13 @@ export const Hero: React.FC = () => {
 
       <div className="w-full max-w-[1200px] mx-auto px-[clamp(1.5rem,5vw,3.5rem)] relative z-10 flex flex-col flex-grow justify-center">
         {/* Desktop Polaroid Portrait Frame */}
-        <div className="hidden lg:block absolute right-[clamp(1.5rem,5vw,3.5rem)] top-4 w-[280px] perspective-[1000px] z-10">
+        <div className="hidden lg:block absolute right-[clamp(1.5rem,5vw,3.5rem)] top-2 w-[290px] perspective-[1000px] z-10">
           <div className="relative bg-white rounded-[12px] p-2 transition-all duration-300 ease-out hover:rotate-1 hover:scale-[1.02] shadow-[rgba(0,0,0,0.12)_0px_8px_32px] border border-border/40">
             <img
               src="/kshitij.jpg"
               alt="Kshitij Parkhe"
               className="w-full aspect-[3/4] object-cover object-[center_top] rounded-[8px]"
-              onError={(e) => {
-                // Graceful fallback if image path has issue
-                (e.target as HTMLElement).style.display = 'none';
-              }}
             />
-            <div className="mt-2 text-center">
-              <span className="font-mono text-[0.68rem] text-muted tracking-wider uppercase">Kshitij Parkhe</span>
-            </div>
           </div>
         </div>
 
@@ -46,7 +39,7 @@ export const Hero: React.FC = () => {
         <div className="w-full flex flex-col relative z-20">
           {/* Mobile/Tablet Avatar + Headline */}
           <div className="flex flex-row items-center gap-4 sm:gap-6 origin-left">
-            <div className="lg:hidden w-[90px] h-[90px] sm:w-[120px] sm:h-[120px] rounded-full overflow-hidden border-2 border-white shadow-md flex-shrink-0 bg-white">
+            <div className="lg:hidden w-[90px] h-[90px] sm:w-[130px] sm:h-[130px] rounded-full overflow-hidden border border-border/50 shadow-sm flex-shrink-0 bg-white">
               <img
                 src="/kshitij.jpg"
                 alt="Kshitij Parkhe"
@@ -65,7 +58,7 @@ export const Hero: React.FC = () => {
           </div>
 
           {/* Subtitle / Role */}
-          <p className="font-body font-semibold text-[1.1rem] sm:text-[1.2rem] text-muted mt-6 max-w-[550px]">
+          <p className="font-body font-medium text-[1.1rem] sm:text-[1.2rem] text-muted mt-6 max-w-[550px]">
             {PERSONAL_INFO.headline}
           </p>
 
@@ -99,7 +92,7 @@ export const Hero: React.FC = () => {
           </div>
 
           {/* Stats Bar */}
-          <div className="grid grid-cols-2 md:flex md:flex-wrap items-center gap-y-6 gap-x-4 md:gap-x-0 pt-8 border-t border-border mt-10 w-full max-w-[680px]">
+          <div className="grid grid-cols-2 md:flex md:flex-wrap items-center gap-y-6 gap-x-4 md:gap-x-0 pt-8 border-t border-border mt-10 w-full max-w-[620px]">
             {PERSONAL_INFO.stats.map((stat, idx) => (
               <div key={idx} className="flex items-center">
                 <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-2">
