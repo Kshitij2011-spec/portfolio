@@ -124,6 +124,7 @@ export const PROJECTS: Project[] = [
 export const PINNED_REPOS: PinnedRepo[] = [
   {
     name: "CRYOS",
+    description: "Integrated polar expedition logistics and asset management platform with operational constraint validation and dependency tracking.",
     language: "Python",
     langColor: "#3572A5",
     url: "https://github.com/Kshitij2011-spec/CRYOS"
@@ -144,6 +145,7 @@ export const PINNED_REPOS: PinnedRepo[] = [
   },
   {
     name: "Expenzo",
+    description: "AI-powered personal finance guardian and expense intelligence platform built with React, TypeScript, and Google Gemini API.",
     language: "TypeScript",
     langColor: "#3178c6",
     url: "https://github.com/abhirajkochale/Expenzo",

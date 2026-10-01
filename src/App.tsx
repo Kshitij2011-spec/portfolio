@@ -4,6 +4,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Work } from './components/Work';
+import { OpenSourceActivity } from './components/OpenSourceActivity';
 import { Experience } from './components/Experience';
 import { Achievements } from './components/Achievements';
 import { Skills } from './components/Skills';
@@ -15,7 +16,7 @@ export const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState('hero');
 
   useEffect(() => {
-    const sectionIds = ['hero', 'about', 'work', 'experience', 'achievements', 'skills', 'education', 'contact'];
+    const sectionIds = ['hero', 'about', 'work', 'activity', 'experience', 'achievements', 'skills', 'education', 'contact'];
     
     const handleScroll = () => {
       const scrollPos = window.scrollY + 200;
@@ -45,6 +46,7 @@ export const App: React.FC = () => {
           <Hero />
           <About />
           <Work />
+          <OpenSourceActivity />
           <Experience />
           <Achievements />
           <Skills />
