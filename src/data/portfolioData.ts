@@ -12,7 +12,7 @@ export const PERSONAL_INFO = {
   github: "https://github.com/Kshitij2011-spec",
   stats: [
     { value: "9.1", label: "CGPA" },
-    { value: "18", label: "Public Repos" },
+    { value: "20", label: "Public Repos" },
     { value: "4", label: "Featured Projects" },
   ],
 };
@@ -159,21 +159,32 @@ export const EXPERIENCE_ITEMS: ExperienceItem[] = [
     id: "google-aicte",
     company: "AICTE – Google AI-ML Virtual Internship (Cohort 14)",
     role: "ML Research Intern",
-    period: "Jan 2025 – Present",
+    period: "Jan 2025 – Apr 2026",
     location: "Virtual",
     bullets: [
       "Applied structured data preprocessing, machine-learning workflows, and model evaluation to real-world datasets under the Google Developers initiative.",
       "Gained practical exposure to the end-to-end cycle of developing and integrating ML models into AI-enabled applications."
+    ]
+  },
+  {
+    id: "rotaract",
+    company: "Rotaract Club of KC College of Engineering and Management Studies and Research",
+    role: "Director, PR & Marketing",
+    period: "Sep 2025 – Apr 2026",
+    location: "Thane",
+    bullets: [
+      "Led promotion and outreach for inter-college initiatives including Kick Off Champs 3.0.",
+      "Supported execution across 16+ teams with an estimated reach of approximately 2,000+."
     ]
   }
 ];
 
 export const ACHIEVEMENTS: AchievementItem[] = [
   {
-    id: "rotaract",
+    id: "rotaract-leadership",
     title: "Director, PR & Marketing",
-    roleOrContext: "Rotaract Club of KC College of Engineering and Management Studies and Research",
-    description: "Lead promotion and outreach for inter-college initiatives including Kick Off Champs 3.0, supporting execution across 16+ teams with an estimated reach of approximately 2,000+.",
+    roleOrContext: "Rotaract Club of KC College of Engineering and Management Studies and Research · Sep 2025 – Apr 2026",
+    description: "Led promotion and outreach for inter-college initiatives including Kick Off Champs 3.0, supporting execution across 16+ teams with an estimated reach of approximately 2,000+.",
     icon: "trophy",
     accentColor: "var(--pastel-yellow)"
   },

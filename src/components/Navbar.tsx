@@ -45,47 +45,61 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
 
   const navLinks = [
     { name: 'Home', href: '#hero', id: 'hero' },
+    { name: 'About', href: '#about', id: 'about' },
     { name: 'Work', href: '#work', id: 'work' },
     { name: 'Experience', href: '#experience', id: 'experience' },
+    { name: 'Achievements', href: '#achievements', id: 'achievements' },
+    { name: 'Skills', href: '#skills', id: 'skills' },
+    { name: 'Education', href: '#education', id: 'education' },
     { name: 'Contact', href: '#contact', id: 'contact' },
   ];
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-[100] h-[64px] transition-all duration-300 ease-in-out border-b ${
+        className={`fixed top-0 left-0 w-full z-[100] h-[72px] transition-all duration-300 ease-in-out border-b ${
           isScrolled
-            ? 'bg-bg/85 backdrop-blur-md border-border/80 shadow-xs'
-            : 'bg-transparent border-transparent'
+            ? 'bg-bg/95 backdrop-blur-md border-border shadow-[0_4px_16px_rgba(0,0,0,0.06)]'
+            : 'bg-bg/90 backdrop-blur-md border-border/80 shadow-[0_1px_3px_rgba(0,0,0,0.03)]'
         }`}
       >
         <div className="w-full max-w-[1200px] mx-auto flex justify-between items-center h-full px-[clamp(1.5rem,5vw,3.5rem)]">
-          {/* Logo Monogram */}
+          {/* Logo Monogram sitting flush at the left content edge */}
           <a
             href="#hero"
-            className="font-body font-black text-[1.25rem] text-text group flex tracking-tight"
+            className="font-body font-black text-[1.35rem] text-text group flex items-center tracking-tight transition-opacity duration-200 hover:opacity-85 select-none"
             aria-label="Kshitij Parkhe Home"
           >
-            <span className="transition-transform duration-200 group-hover:-translate-x-[2px]">K</span>
-            <span className="transition-transform duration-200 group-hover:translate-x-[2px]">P</span>
+            <span className="inline-block transition-transform duration-200 ease-out group-hover:-translate-x-[2px]">K</span>
+            <span className="inline-block transition-transform duration-200 ease-out group-hover:translate-x-[2px]">P</span>
           </a>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8" aria-label="Main Navigation">
+          {/* Desktop Nav with elevated typography and refined micro-interactions */}
+          <nav className="hidden lg:flex items-center gap-5 xl:gap-7" aria-label="Main Navigation">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
+              const isContact = link.id === 'contact';
               return (
                 <a
                   key={link.id}
                   href={link.href}
-                  className={`relative font-mono text-[0.72rem] tracking-[0.18em] uppercase py-1 transition-all duration-200 ${
-                    isActive ? 'text-text font-semibold' : 'text-text/60 hover:text-text'
+                  className={`group relative font-mono text-[0.82rem] tracking-[0.12em] uppercase py-1.5 transition-all duration-200 inline-flex items-center gap-1 ${
+                    isActive
+                      ? 'text-text font-bold'
+                      : 'text-text/65 hover:text-text font-medium'
                   }`}
                 >
-                  {link.name}
-                  {isActive && (
-                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-text rounded-full transition-transform duration-300" />
+                  <span>{link.name}</span>
+                  {isContact && (
+                    <span className="inline-block text-[0.7rem] transition-transform duration-200 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                      ↗
+                    </span>
                   )}
+                  <span
+                    className={`absolute bottom-0 left-0 h-[2px] bg-text transition-all duration-200 ${
+                      isActive ? 'w-full' : 'w-0 group-hover:w-full opacity-60'
+                    }`}
+                  />
                 </a>
               );
             })}
@@ -94,7 +108,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
           {/* Mobile Hamburger Button */}
           <button
             onClick={() => setIsMobileMenuOpen(true)}
-            className="md:hidden text-text p-1 hover:opacity-75 transition-opacity cursor-pointer"
+            className="lg:hidden text-text p-2 hover:opacity-75 transition-opacity cursor-pointer rounded-[6px] border border-border/60 bg-bg-card shadow-xs"
             aria-label="Open mobile navigation menu"
             aria-expanded={isMobileMenuOpen}
           >
@@ -111,27 +125,27 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
           aria-label="Navigation Menu"
           className="fixed inset-0 z-[200] bg-bg flex flex-col p-[clamp(1.5rem,5vw,3.5rem)] transition-opacity duration-300"
         >
-          <div className="flex justify-between items-center h-[64px] mb-12">
-            <span className="font-body font-black text-[1.25rem] text-text flex tracking-tight">
+          <div className="flex justify-between items-center h-[72px] mb-8">
+            <span className="font-body font-black text-[1.35rem] text-text flex tracking-tight">
               <span>K</span>
               <span>P</span>
             </span>
             <button
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-muted hover:text-text p-1 transition-colors cursor-pointer"
+              className="text-muted hover:text-text p-2 transition-colors cursor-pointer rounded-[6px] border border-border/60 bg-bg-card shadow-xs"
               aria-label="Close mobile navigation menu"
             >
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5" />
             </button>
           </div>
 
-          <nav className="flex flex-col gap-8 flex-grow justify-center" aria-label="Mobile Navigation">
+          <nav className="flex flex-col gap-5 flex-grow justify-center overflow-y-auto py-4" aria-label="Mobile Navigation">
             {navLinks.map((link) => (
               <a
                 key={link.id}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`font-body text-[clamp(2.2rem,8vw,3.5rem)] uppercase transition-all duration-200 font-extrabold tracking-tight ${
+                className={`font-body text-[clamp(1.8rem,6vw,2.8rem)] uppercase transition-all duration-200 font-extrabold tracking-tight ${
                   activeSection === link.id ? 'text-text' : 'text-text/45 hover:text-text'
                 }`}
               >

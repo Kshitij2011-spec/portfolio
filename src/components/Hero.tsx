@@ -28,7 +28,7 @@ export const Hero: React.FC = () => {
         <div className="hidden lg:block absolute right-[clamp(1.5rem,5vw,3.5rem)] top-2 w-[290px] perspective-[1000px] z-10">
           <div className="relative bg-white rounded-[12px] p-2 transition-all duration-300 ease-out hover:rotate-1 hover:scale-[1.02] shadow-[rgba(0,0,0,0.12)_0px_8px_32px] border border-border/40">
             <img
-              src="/kshitij.jpg"
+              src="/Kshitijpic.png"
               alt="Kshitij Parkhe"
               className="w-full aspect-[3/4] object-cover object-[center_top] rounded-[8px]"
             />
@@ -41,7 +41,7 @@ export const Hero: React.FC = () => {
           <div className="flex flex-row items-center gap-4 sm:gap-6 origin-left">
             <div className="lg:hidden w-[90px] h-[90px] sm:w-[130px] sm:h-[130px] rounded-full overflow-hidden border border-border/50 shadow-sm flex-shrink-0 bg-white">
               <img
-                src="/kshitij.jpg"
+                src="/Kshitijpic.png"
                 alt="Kshitij Parkhe"
                 className="w-full h-full object-cover object-[center_top]"
               />

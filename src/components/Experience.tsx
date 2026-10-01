@@ -4,7 +4,7 @@ import { EXPERIENCE_ITEMS } from '../data/portfolioData';
 export const Experience: React.FC = () => {
   return (
     <section id="experience" className="w-full bg-bg py-16 md:py-24 border-b border-border overflow-hidden scroll-mt-20">
-      <div className="w-full max-w-[1000px] mx-auto px-[clamp(1.5rem,5vw,3.5rem)]">
+      <div className="w-full max-w-[1200px] mx-auto px-[clamp(1.5rem,5vw,3.5rem)]">
         {/* Section Header */}
         <div className="mb-16">
           <div className="flex items-center gap-2 mb-4">

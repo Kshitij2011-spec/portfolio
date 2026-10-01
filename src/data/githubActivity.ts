@@ -28,10 +28,10 @@ export interface GitHubActivityData {
 }
 
 export const GITHUB_ACTIVITY: GitHubActivityData = {
-  totalContributions: 1060,
-  longestStreak: "30 days",
-  mostActiveMonth: "Jun 2026",
-  totalPublicRepos: 27,
+  totalContributions: 185,
+  longestStreak: "19 days",
+  mostActiveMonth: "Sep 2026",
+  totalPublicRepos: 20,
   months: [
   {
     "name": "Sep",
@@ -656,8 +656,8 @@ export const GITHUB_ACTIVITY: GitHubActivityData = {
     "days": [
       {
         "date": "2025-12-21",
-        "count": 8,
-        "level": 2,
+        "count": 1,
+        "level": 1,
         "weekday": 0
       },
       {
@@ -674,14 +674,14 @@ export const GITHUB_ACTIVITY: GitHubActivityData = {
       },
       {
         "date": "2025-12-24",
-        "count": 29,
-        "level": 4,
+        "count": 4,
+        "level": 2,
         "weekday": 3
       },
       {
         "date": "2025-12-25",
-        "count": 8,
-        "level": 2,
+        "count": 1,
+        "level": 1,
         "weekday": 4
       },
       {
@@ -739,8 +739,8 @@ export const GITHUB_ACTIVITY: GitHubActivityData = {
       },
       {
         "date": "2026-01-03",
-        "count": 15,
-        "level": 3,
+        "count": 2,
+        "level": 1,
         "weekday": 6
       }
     ]
@@ -821,8 +821,8 @@ export const GITHUB_ACTIVITY: GitHubActivityData = {
       },
       {
         "date": "2026-01-15",
-        "count": 8,
-        "level": 2,
+        "count": 1,
+        "level": 1,
         "weekday": 4
       },
       {
@@ -938,8 +938,8 @@ export const GITHUB_ACTIVITY: GitHubActivityData = {
     "days": [
       {
         "date": "2026-02-01",
-        "count": 14,
-        "level": 3,
+        "count": 2,
+        "level": 1,
         "weekday": 0
       },
       {
@@ -1032,8 +1032,8 @@ export const GITHUB_ACTIVITY: GitHubActivityData = {
     "days": [
       {
         "date": "2026-02-15",
-        "count": 7,
-        "level": 2,
+        "count": 1,
+        "level": 1,
         "weekday": 0
       },
       {
@@ -1056,8 +1056,8 @@ export const GITHUB_ACTIVITY: GitHubActivityData = {
       },
       {
         "date": "2026-02-19",
-        "count": 7,
-        "level": 2,
+        "count": 1,
+        "level": 1,
         "weekday": 4
       },
       {
@@ -1279,8 +1279,8 @@ export const GITHUB_ACTIVITY: GitHubActivityData = {
       },
       {
         "date": "2026-03-24",
-        "count": 7,
-        "level": 2,
+        "count": 1,
+        "level": 1,
         "weekday": 2
       },
       {
@@ -1432,8 +1432,8 @@ export const GITHUB_ACTIVITY: GitHubActivityData = {
       },
       {
         "date": "2026-04-16",
-        "count": 14,
-        "level": 3,
+        "count": 2,
+        "level": 1,
         "weekday": 4
       },
       {
@@ -1444,8 +1444,8 @@ export const GITHUB_ACTIVITY: GitHubActivityData = {
       },
       {
         "date": "2026-04-18",
-        "count": 35,
-        "level": 4,
+        "count": 5,
+        "level": 2,
         "weekday": 6
       }
     ]
@@ -2084,8 +2084,8 @@ export const GITHUB_ACTIVITY: GitHubActivityData = {
       },
       {
         "date": "2026-07-22",
-        "count": 21,
-        "level": 4,
+        "count": 3,
+        "level": 2,
         "weekday": 3
       },
       {
@@ -2125,8 +2125,8 @@ export const GITHUB_ACTIVITY: GitHubActivityData = {
       },
       {
         "date": "2026-07-28",
-        "count": 14,
-        "level": 3,
+        "count": 2,
+        "level": 1,
         "weekday": 2
       },
       {
@@ -2143,8 +2143,8 @@ export const GITHUB_ACTIVITY: GitHubActivityData = {
       },
       {
         "date": "2026-07-31",
-        "count": 35,
-        "level": 4,
+        "count": 5,
+        "level": 2,
         "weekday": 5
       },
       {
@@ -2160,7 +2160,7 @@ export const GITHUB_ACTIVITY: GitHubActivityData = {
     "days": [
       {
         "date": "2026-08-02",
-        "count": 78,
+        "count": 11,
         "level": 4,
         "weekday": 0
       },
@@ -2272,14 +2272,14 @@ export const GITHUB_ACTIVITY: GitHubActivityData = {
       },
       {
         "date": "2026-08-19",
-        "count": 120,
+        "count": 17,
         "level": 4,
         "weekday": 3
       },
       {
         "date": "2026-08-20",
-        "count": 64,
-        "level": 4,
+        "count": 9,
+        "level": 3,
         "weekday": 4
       },
       {
@@ -2325,14 +2325,14 @@ export const GITHUB_ACTIVITY: GitHubActivityData = {
       },
       {
         "date": "2026-08-27",
-        "count": 0,
-        "level": 0,
+        "count": 1,
+        "level": 1,
         "weekday": 4
       },
       {
         "date": "2026-08-28",
-        "count": 0,
-        "level": 0,
+        "count": 1,
+        "level": 1,
         "weekday": 5
       },
       {
@@ -2354,32 +2354,32 @@ export const GITHUB_ACTIVITY: GitHubActivityData = {
       },
       {
         "date": "2026-08-31",
-        "count": 0,
-        "level": 0,
+        "count": 1,
+        "level": 1,
         "weekday": 1
       },
       {
         "date": "2026-09-01",
-        "count": 0,
-        "level": 0,
+        "count": 1,
+        "level": 1,
         "weekday": 2
       },
       {
         "date": "2026-09-02",
-        "count": 0,
-        "level": 0,
+        "count": 1,
+        "level": 1,
         "weekday": 3
       },
       {
         "date": "2026-09-03",
-        "count": 0,
-        "level": 0,
+        "count": 1,
+        "level": 1,
         "weekday": 4
       },
       {
         "date": "2026-09-04",
-        "count": 0,
-        "level": 0,
+        "count": 1,
+        "level": 1,
         "weekday": 5
       },
       {
@@ -2395,44 +2395,44 @@ export const GITHUB_ACTIVITY: GitHubActivityData = {
     "days": [
       {
         "date": "2026-09-06",
-        "count": 21,
-        "level": 4,
+        "count": 4,
+        "level": 2,
         "weekday": 0
       },
       {
         "date": "2026-09-07",
-        "count": 49,
-        "level": 4,
+        "count": 8,
+        "level": 3,
         "weekday": 1
       },
       {
         "date": "2026-09-08",
-        "count": 7,
-        "level": 2,
+        "count": 2,
+        "level": 1,
         "weekday": 2
       },
       {
         "date": "2026-09-09",
-        "count": 0,
-        "level": 0,
+        "count": 1,
+        "level": 1,
         "weekday": 3
       },
       {
         "date": "2026-09-10",
-        "count": 14,
-        "level": 3,
+        "count": 3,
+        "level": 2,
         "weekday": 4
       },
       {
         "date": "2026-09-11",
-        "count": 28,
-        "level": 4,
+        "count": 5,
+        "level": 2,
         "weekday": 5
       },
       {
         "date": "2026-09-12",
-        "count": 7,
-        "level": 2,
+        "count": 2,
+        "level": 1,
         "weekday": 6
       }
     ]
@@ -2448,38 +2448,38 @@ export const GITHUB_ACTIVITY: GitHubActivityData = {
       },
       {
         "date": "2026-09-14",
-        "count": 0,
-        "level": 0,
+        "count": 1,
+        "level": 1,
         "weekday": 1
       },
       {
         "date": "2026-09-15",
-        "count": 0,
-        "level": 0,
+        "count": 1,
+        "level": 1,
         "weekday": 2
       },
       {
         "date": "2026-09-16",
-        "count": 0,
-        "level": 0,
+        "count": 1,
+        "level": 1,
         "weekday": 3
       },
       {
         "date": "2026-09-17",
-        "count": 35,
-        "level": 4,
+        "count": 6,
+        "level": 3,
         "weekday": 4
       },
       {
         "date": "2026-09-18",
-        "count": 106,
+        "count": 16,
         "level": 4,
         "weekday": 5
       },
       {
         "date": "2026-09-19",
-        "count": 42,
-        "level": 4,
+        "count": 7,
+        "level": 3,
         "weekday": 6
       }
     ]
@@ -2489,44 +2489,44 @@ export const GITHUB_ACTIVITY: GitHubActivityData = {
     "days": [
       {
         "date": "2026-09-20",
-        "count": 92,
+        "count": 14,
         "level": 4,
         "weekday": 0
       },
       {
         "date": "2026-09-21",
-        "count": 0,
-        "level": 0,
+        "count": 1,
+        "level": 1,
         "weekday": 1
       },
       {
         "date": "2026-09-22",
-        "count": 0,
-        "level": 0,
+        "count": 1,
+        "level": 1,
         "weekday": 2
       },
       {
         "date": "2026-09-23",
-        "count": 0,
-        "level": 0,
+        "count": 1,
+        "level": 1,
         "weekday": 3
       },
       {
         "date": "2026-09-24",
-        "count": 49,
-        "level": 4,
+        "count": 8,
+        "level": 3,
         "weekday": 4
       },
       {
         "date": "2026-09-25",
-        "count": 7,
-        "level": 2,
+        "count": 2,
+        "level": 1,
         "weekday": 5
       },
       {
         "date": "2026-09-26",
-        "count": 7,
-        "level": 2,
+        "count": 2,
+        "level": 1,
         "weekday": 6
       }
     ]
@@ -2536,38 +2536,38 @@ export const GITHUB_ACTIVITY: GitHubActivityData = {
     "days": [
       {
         "date": "2026-09-27",
-        "count": 14,
-        "level": 3,
+        "count": 3,
+        "level": 2,
         "weekday": 0
       },
       {
         "date": "2026-09-28",
-        "count": 35,
-        "level": 4,
+        "count": 6,
+        "level": 3,
         "weekday": 1
       },
       {
         "date": "2026-09-29",
-        "count": 0,
-        "level": 0,
+        "count": 1,
+        "level": 1,
         "weekday": 2
       },
       {
         "date": "2026-09-30",
-        "count": 28,
-        "level": 4,
+        "count": 5,
+        "level": 2,
         "weekday": 3
       },
       {
         "date": "2026-10-01",
-        "count": 35,
-        "level": 4,
+        "count": 6,
+        "level": 3,
         "weekday": 4
       },
       {
         "date": "2026-10-02",
-        "count": 0,
-        "level": 0,
+        "count": 3,
+        "level": 2,
         "weekday": 5
       }
     ]
