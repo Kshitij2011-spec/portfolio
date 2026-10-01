@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f5f0eb;
+  --bg-alt: #ede8e3;
+  --bg-dark: #1c1917;
+  --bg-card: #ffffff;
+  --border: #ddd8d3;
+  --border-dark: #2c2825;
+  --text: #1c1917;
+  --text-muted: #78716c;
+  --text-light: #a8a29e;
+  --pastel-blue: #bfd7ea;
+  --pastel-pink: #f2c4ce;
+  --pastel-green: #b8e0c8;
+  --pastel-yellow: #f5e6a3;
+  --pastel-purple: #d4c5f9;
+  --pastel-peach: #f9d4bb;
+  --accent: #1c1917;
+  --accent-inv: #f5f0eb;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+::selection {
+  background-color: var(--pastel-purple);
+  color: var(--text);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Outline text styles matching reference site */
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--text);
+}
+
+.outline-text-inv {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--accent-inv);
+}
+
+@keyframes float-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.animate-float-subtle {
+  animation: float-subtle 3s ease-in-out infinite;
+}
