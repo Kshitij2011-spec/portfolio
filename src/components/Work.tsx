@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, ExternalLink, Terminal, Layers } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ExternalLink, Terminal, Layers, ArrowUpRight } from 'lucide-react';
 import { PROJECTS, PINNED_REPOS } from '../data/portfolioData';
 import { Project } from '../types';
 
@@ -321,35 +321,54 @@ export const Work: React.FC = () => {
               href="https://github.com/Kshitij2011-spec"
               target="_blank"
               rel="noreferrer"
-              className="font-mono text-[0.72rem] text-text hover:text-muted transition-colors tracking-widest uppercase flex items-center gap-1"
+              className="font-mono text-[0.72rem] text-text hover:text-muted transition-colors tracking-widest uppercase flex items-center gap-1 group/gh"
             >
-              18 Repos on GitHub →
+              All Repos on GitHub <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover/gh:translate-x-0.5 group-hover/gh:-translate-y-0.5" />
             </a>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {PINNED_REPOS.map((repo, ri) => (
               <a
                 key={ri}
                 href={repo.url}
                 target="_blank"
                 rel="noreferrer"
-                className="group flex flex-col p-5 bg-bg-card border border-border hover:border-text/40 rounded-[12px] transition-all shadow-xs h-full"
+                className="group relative flex flex-col justify-between p-6 bg-bg-card hover:bg-[#faf7f4] border border-border hover:border-text/40 rounded-[14px] transition-all duration-300 shadow-xs hover:shadow-md -translate-y-0 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent cursor-pointer min-h-[160px]"
               >
-                <span className="font-body font-bold text-[1.05rem] text-text mb-2 group-hover:underline decoration-1 underline-offset-2">
-                  {repo.name}
-                </span>
-                <p className="font-body text-[0.85rem] text-muted mb-6 flex-grow leading-relaxed">
-                  {repo.description}
-                </p>
-                <div className="flex items-center gap-4 text-[0.75rem] font-mono text-muted mt-auto pt-3 border-t border-border/40">
-                  <div className="flex items-center gap-1.5">
+                <div>
+                  <div className="flex items-start justify-between gap-3 mb-2.5">
+                    <div className="flex items-center gap-2.5 flex-wrap">
+                      <span className="font-body font-bold text-[1.1rem] text-text group-hover:underline decoration-1 underline-offset-3">
+                        {repo.name}
+                      </span>
+                      {repo.ownershipBadge && (
+                        <span className="font-mono text-[0.66rem] tracking-wider uppercase px-2.5 py-0.5 rounded-full bg-pastel-yellow/70 text-stone-800 border border-amber-300/60 font-medium">
+                          {repo.ownershipBadge}
+                        </span>
+                      )}
+                    </div>
+                    <ArrowUpRight className="w-4 h-4 text-muted group-hover:text-text transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0" />
+                  </div>
+
+                  {repo.description && (
+                    <p className="font-body text-[0.84rem] text-muted leading-relaxed mb-4">
+                      {repo.description}
+                    </p>
+                  )}
+                </div>
+
+                <div className="flex items-center justify-between text-[0.75rem] font-mono text-muted pt-3 border-t border-border/50 mt-auto">
+                  <div className="flex items-center gap-2">
                     <span
                       className="w-2.5 h-2.5 rounded-full"
                       style={{ backgroundColor: repo.langColor }}
                     />
-                    {repo.language}
+                    <span>{repo.language}</span>
                   </div>
+                  <span className="text-[0.7rem] text-text-light group-hover:text-muted transition-colors">
+                    github.com ↗
+                  </span>
                 </div>
               </a>
             ))}

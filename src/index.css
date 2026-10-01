@@ -23,7 +23,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   background-color: var(--bg);
   color: var(--text);
 }

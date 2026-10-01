@@ -27,15 +27,19 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // Body scroll locking when drawer is open
+  // Body scroll locking and Lenis pausing when drawer is open
   useEffect(() => {
+    const lenis = (window as any).__lenis;
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
+      if (lenis) lenis.stop();
     } else {
       document.body.style.overflow = '';
+      if (lenis) lenis.start();
     }
     return () => {
       document.body.style.overflow = '';
+      if (lenis) lenis.start();
     };
   }, [isMobileMenuOpen]);
 

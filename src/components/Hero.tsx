@@ -68,26 +68,29 @@ export const Hero: React.FC = () => {
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-wrap items-center gap-8 mt-8 font-body text-[0.95rem]">
+          <div className="flex flex-wrap items-center gap-6 sm:gap-8 mt-8 font-body text-[0.95rem]">
             <a
               href="#work"
-              className="text-text font-medium border-b-[1.5px] border-text pb-0.5 hover:text-muted hover:border-muted transition-colors"
+              className="group inline-flex items-center gap-1.5 text-text font-semibold border-b-[1.5px] border-text pb-0.5 hover:text-muted hover:border-muted transition-all duration-200"
             >
-              View My Work →
+              <span>View My Work</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
             </a>
             <a
               href={PERSONAL_INFO.github}
               target="_blank"
               rel="noreferrer"
-              className="text-muted font-mono text-[0.9rem] border-b border-border pb-0.5 hover:text-text hover:border-text transition-colors"
+              className="group inline-flex items-center gap-1 text-muted font-mono text-[0.88rem] border-b border-border pb-0.5 hover:text-text hover:border-text transition-all duration-200"
             >
-              GitHub ↗
+              <span>GitHub</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
             </a>
             <a
               href="#contact"
-              className="text-muted font-mono text-[0.9rem] border-b border-border pb-0.5 hover:text-text hover:border-text transition-colors"
+              className="group inline-flex items-center gap-1 text-muted font-mono text-[0.88rem] border-b border-border pb-0.5 hover:text-text hover:border-text transition-all duration-200"
             >
-              Contact ↗
+              <span>Contact</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
             </a>
           </div>
 

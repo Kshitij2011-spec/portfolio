@@ -43,10 +43,12 @@ export interface SkillCategory {
 
 export interface PinnedRepo {
   name: string;
-  description: string;
+  description?: string;
   language: string;
   langColor: string;
   url: string;
+  isExternal?: boolean;
+  ownershipBadge?: string;
   stars?: number;
   forks?: number;
 }

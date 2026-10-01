@@ -33,17 +33,19 @@ export const About: React.FC = () => {
           <div className="flex flex-wrap items-center gap-8 mt-4 font-body text-[0.95rem]">
             <a
               href="#work"
-              className="text-text font-medium border-b-[1.5px] border-text pb-0.5 hover:text-muted hover:border-muted transition-colors"
+              className="group inline-flex items-center gap-1.5 text-text font-medium border-b-[1.5px] border-text pb-0.5 hover:text-muted hover:border-muted transition-all duration-200"
             >
-              View my work →
+              <span>View my work</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
             </a>
             <a
               href={PERSONAL_INFO.github}
               target="_blank"
               rel="noreferrer"
-              className="text-muted font-mono text-[0.88rem] border-b border-border pb-0.5 hover:text-text hover:border-text transition-colors"
+              className="group inline-flex items-center gap-1.5 text-muted font-mono text-[0.88rem] border-b border-border pb-0.5 hover:text-text hover:border-text transition-all duration-200"
             >
-              github.com/Kshitij2011-spec →
+              <span>github.com/Kshitij2011-spec</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
             </a>
           </div>
         </div>

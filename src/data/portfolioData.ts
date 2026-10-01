@@ -123,6 +123,19 @@ export const PROJECTS: Project[] = [
 
 export const PINNED_REPOS: PinnedRepo[] = [
   {
+    name: "CRYOS",
+    language: "Python",
+    langColor: "#3572A5",
+    url: "https://github.com/Kshitij2011-spec/CRYOS"
+  },
+  {
+    name: "krishi-sahayak",
+    description: "Krishi-Sahayak: AI-powered crop advisory MVP for SIH25010. Crop recommendation (ML), pest detection (pretrained model), fertilizer guidance, mandi prices.",
+    language: "Python",
+    langColor: "#3572A5",
+    url: "https://github.com/Kshitij2011-spec/krishi-sahayak"
+  },
+  {
     name: "polarops",
     description: "Antarctic operational digital twin and decision-support platform for Maitri and Bharati research stations. 39-endpoint FastAPI backend + React/Vite.",
     language: "TypeScript",
@@ -130,39 +143,12 @@ export const PINNED_REPOS: PinnedRepo[] = [
     url: "https://github.com/Kshitij2011-spec/polarops"
   },
   {
-    name: "AIML-PROJECT-EXP10",
-    description: "MachineGuard AI: Predictive maintenance system using Random Forest on AI4I 2020 benchmark with leakage-aware feature engineering. 98.8% test accuracy.",
-    language: "Python",
-    langColor: "#3572A5",
-    url: "https://github.com/Kshitij2011-spec/AIML-PROJECT-EXP10"
-  },
-  {
-    name: "daily-dsa-python",
-    description: "Algorithmic problem solving and core data structures implementation in Python, covering trees, graphs, dynamic programming, and search algorithms.",
-    language: "Python",
-    langColor: "#3572A5",
-    url: "https://github.com/Kshitij2011-spec/daily-dsa-python"
-  },
-  {
-    name: "HexaCoder-SIH26062",
-    description: "Engineering solutions and rapid prototype codebase for Smart India Hackathon solving real-time situational tracking and workflow automation.",
+    name: "Expenzo",
     language: "TypeScript",
     langColor: "#3178c6",
-    url: "https://github.com/Kshitij2011-spec/HexaCoder-SIH26062"
-  },
-  {
-    name: "krishi-sahayak",
-    description: "AI-powered crop advisory MVP for SIH25010: Crop recommendation (ML), pest detection, fertilizer guidance, and mandi prices.",
-    language: "Python",
-    langColor: "#3572A5",
-    url: "https://github.com/Kshitij2011-spec/krishi-sahayak"
-  },
-  {
-    name: "Secure-Python-Password-Manager",
-    description: "Cryptographic credential management utility in Python implementing encrypted key-value persistence and master-key validation.",
-    language: "Python",
-    langColor: "#3572A5",
-    url: "https://github.com/Kshitij2011-spec/Secure-Python-Password-Manager"
+    url: "https://github.com/abhirajkochale/Expenzo",
+    isExternal: true,
+    ownershipBadge: "External Reference"
   }
 ];
 

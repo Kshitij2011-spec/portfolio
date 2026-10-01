@@ -156,13 +156,14 @@ export const Contact: React.FC = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="mt-2 w-full sm:w-auto self-start px-7 py-3 font-mono text-[0.88rem] uppercase tracking-wider text-white border border-white/80 rounded-[8px] hover:bg-white hover:text-black transition-all cursor-pointer disabled:opacity-50 flex items-center justify-center gap-2"
+              className="group mt-2 w-full sm:w-auto self-start px-7 py-3 font-mono text-[0.88rem] uppercase tracking-wider text-white border border-white/80 rounded-[8px] hover:bg-white hover:text-black transition-all cursor-pointer disabled:opacity-50 flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
                 'Sending...'
               ) : (
                 <>
-                  Send Message <Send className="w-3.5 h-3.5" />
+                  <span>Send Message</span>
+                  <Send className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
                 </>
               )}
             </button>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { SmoothScroll } from './components/SmoothScroll';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
@@ -37,20 +38,22 @@ export const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-bg text-text font-body selection:bg-pastel-purple selection:text-text">
-      <Navbar activeSection={activeSection} />
-      <main>
-        <Hero />
-        <About />
-        <Work />
-        <Experience />
-        <Achievements />
-        <Skills />
-        <Education />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <SmoothScroll>
+      <div className="min-h-screen bg-bg text-text font-body selection:bg-pastel-purple selection:text-text">
+        <Navbar activeSection={activeSection} />
+        <main>
+          <Hero />
+          <About />
+          <Work />
+          <Experience />
+          <Achievements />
+          <Skills />
+          <Education />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </SmoothScroll>
   );
 };
 
